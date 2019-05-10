@@ -1,0 +1,182 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+
+   &:hover, &:focus {
+    outline: 0;
+    @include transition(.3s);
+  }
+}
+
+.first-load-wrapper {
+  background: $white;
+  height: 100%;
+  @include transition(.3s);
+}
+
+body {
+  overflow-y: scroll;
+}
+
+// to remove ios auto zoom
+@include media($sm) {
+  body {
+    font-size: 16px;
+  }
+
+  input[type="text"] {
+    font-size: inherit;
+  }
+}
+
+html {
+  overflow: hidden;
+}
+
+html, body {
+  margin: 0 auto;
+  font-family: $regular-font-family;
+  height: 100%;
+  top: inherit;
+  background: $white;
+  -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
+
+  @include media($sm) {
+    overflow-x: hidden;
+  }
+}
+
+html.cdk-global-scrollblock body{
+  overflow: hidden;
+}
+
+a {
+  color: $link-color;
+  cursor: pointer;
+  font-size: 1.1em;
+  text-decoration: none;
+  font-family: $regular-font-family;
+  display: block;
+
+  &[href^="mailto:"], &[href^="tel:"] {
+    color: $primary;
+  }
+
+  &:hover {
+    color: $black;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+  text-decoration: none;
+  line-height: $medium-line-height;
+  color: $black;
+  margin: 5px 0;
+}
+
+h1 {
+  @include font-size($large-size);
+
+  font-family: $bold-font-family;
+  margin: 15px 0;
+
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 80px;
+}
+
+h2 {
+  letter-spacing: -1.2px;
+  font-family: $bold-font-family;
+  line-height: 60px;
+
+  @include font-size($bigger-size);
+}
+
+h3 {
+  @include font-size($medium-size);
+
+  font-size: 32px;
+  font-weight: $bold-weight;
+  line-height: 50px;
+  letter-spacing: -0.8px;
+}
+
+h4 {
+  @include font-size($lighter-size);
+
+  font-weight: $light-weight;
+  font-family: $regular-font-family;
+  letter-spacing: -0.6px;
+  // line-height: 45px;
+  line-height: 35px;
+}
+
+h5 {
+  @include font-size($slim-size);
+
+  font-weight: $light-weight;
+  font-family: $regular-font-family;
+}
+
+h6 {
+  @include font-size($super-slim-size);
+
+  font-weight: $light-weight;
+  font-family: $regular-font-family;
+}
+
+p {
+  @include font-size($slim-size);
+
+  color: $primary-font-color;
+  line-height: $medium-line-height;
+  margin: 5px 0;
+  font-family: $regular-font-family;
+  letter-spacing: -0.5px;
+}
+
+hr {
+  margin: 15px 0;
+  position: relative;
+  border: 0;
+  text-align: center;
+
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: $hr;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: $black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    background-color: $white;
+    font-size: 14px;
+  }
+}
+
+.active-link {
+  color: $secondary;
+  font-weight: $bold-weight;
+  font-family: $bold-font-family;
+}

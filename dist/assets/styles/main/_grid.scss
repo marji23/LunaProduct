@@ -1,0 +1,337 @@
+// stable container
+
+body .container, body .container.grid{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+
+    @include media($md) {
+        max-width: 720px;
+    }
+
+    @include media($lg) {
+        max-width: 960px;
+    }
+
+    @include media($xl) {
+        max-width: 1140px;
+    }
+
+}
+
+body .display-block-sm {
+  @include media($sm) {
+    display: block;
+  }
+}
+
+// some grid stuff ( colums created in mixins )
+.grid {
+    display: grid;
+
+    &.items-center {
+      align-items: center;
+    }
+
+    &.items-baseline {
+      align-items: baseline;
+    }
+
+    &.self-center {
+      align-self: center;
+    }
+
+    &.justify-center {
+      justify-content: center;
+    }
+
+    &.justify-between {
+      justify-content: space-between;
+    }
+
+    &.justify-around {
+      justify-content: space-around;
+    }
+
+    &.justify-start {
+      justify-content: flex-start;
+    }
+
+    &.justify-end {
+      justify-content: flex-end;
+    }
+
+    @include media($sm) {
+      &.items-sm-center {
+        align-items: center;
+      }
+
+      &.items-sm-baseline {
+        align-items: baseline;
+      }
+
+      &.self-sm-center {
+        align-self: center;
+      }
+
+      &.justify-sm-center {
+        justify-content: center;
+      }
+
+      &.justify-sm-around {
+        justify-content: space-between;
+      }
+
+      &.justify-sm-around {
+        justify-content: space-around;
+      }
+
+      &.justify-sm-start {
+        justify-content: flex-start;
+      }
+
+      &.justify-sm-end {
+        justify-content: flex-end;
+      }
+    }
+
+}
+
+
+// some flex stuff
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  &.flex-between {
+    justify-content: space-between;
+  }
+
+  &.flex-around {
+    justify-content: space-around;
+  }
+
+  &.flex-center {
+    justify-content: center;
+  }
+
+  &.flex-start {
+    justify-content: flex-start;
+  }
+
+  &.flex-end {
+    justify-content: flex-end;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-baseline {
+    align-items: baseline;
+  }
+
+  &.no-wrap {
+    flex-wrap: nowrap;
+  }
+
+  @include media($sm-md) {
+    &.wrap-sm-md {
+      flex-wrap: wrap;
+    }
+  }
+
+  @include media($sm) {
+    &.wrap-sm {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// grid gap classes 5 - 10 - 15 - 20 | px
+@for $i from 1 through 4{
+    .g-gap-#{$i*5} {
+      grid-gap: $i * 5 + px;
+    }
+
+    @include media($sm) {
+      body .g-gap-sm-#{$i*5} {
+        grid-gap: $i * 5 + px;
+      }
+    }
+}
+
+
+// grid columns
+@for $i from 1 through 12 {
+    &.col-#{$i} {
+
+      @if ($i == 2) {
+        @include media($sm) {
+          grid-template-columns: repeat(1, 100%);
+        }
+
+        &.in-half {
+          @include media($lg-xl) {
+            grid-template-columns: repeat(2, 49%);
+          }
+        }
+      }
+
+      @if ($i == 3) {
+        @include media($md) {
+          grid-template-columns: repeat(2, auto);
+        }
+
+        @include media($sm) {
+          grid-template-columns: repeat(1, 100%);
+        }
+
+        &.in-half {
+          @include media($lg-xl) {
+            grid-template-columns: repeat(2, 32.3%);
+          }
+        }
+      }
+
+      @if ($i == 4) {
+        @include media($md-lg) {
+          grid-template-columns: repeat(2, auto);
+        }
+
+        @include media($sm) {
+          grid-template-columns: repeat(1, 100%);
+        }
+
+        &.in-half {
+          @include media($lg-xl) {
+            grid-template-columns: repeat(2, 24%);
+          }
+        }
+      }
+
+      @if ($i == 6) {
+        @include media($md-lg) {
+          grid-template-columns: repeat(3, auto);
+        }
+
+        @include media($sm) {
+          grid-template-columns: repeat(1, auto);
+        }
+
+        @include media($md) {
+          grid-template-columns: repeat(2, auto);
+        }
+
+        &.in-half {
+          @include media($lg-xl) {
+            grid-template-columns: repeat(2, 19%);
+          }
+        }
+      }
+
+      // @if ($i == 8) {
+      //     @include media($md-lg) {
+      //         grid-template-columns: repeat(4, auto);
+      //     }
+      //     @include media($sm) {
+      //         grid-template-columns: repeat(1, auto);
+      //     }
+      //     @include media($md) {
+      //         grid-template-columns: repeat(3, auto);
+      //     }
+      // }
+
+      @else {
+          grid-template-columns: repeat($i, auto);
+      }
+
+    }
+}
+
+
+/////////////////////////////////
+  // Blog Grid //
+////////////////////////////////
+
+.blog-grid {
+  grid-template-columns: [col1-start] 33.5%  [col2-start] 32.5%  [col3-start] 31.5% [col3-end];
+  grid-template-rows: [row1-start] auto [row2-start] auto [row2-end];
+
+  @include media($md) {
+    grid-template-columns: [col1-start] auto  [col2-start] auto  [col3-start] auto [col3-end];
+  }
+
+  .full-height-img {
+
+    img{
+      // height: 100% !important;
+      width: 100%;
+    }
+
+    .rectangular {
+      height: 600px;
+    }
+  }
+
+  @include media($sm) {
+    display: block;
+
+    div {
+      padding-bottom: 10px;
+    }
+  }
+
+}
+
+.col-1-one {
+  grid-column: col1-start;
+  // max-width: 360px;
+}
+
+.col-2-one {
+  grid-column: col2-start;
+  // max-width: 360px;
+}
+
+.col-3-one {
+  grid-column: col3-start;
+  // max-width: 360px;
+}
+
+.col-from-1-to-2 {
+  grid-column: col1-start / col3-start;
+
+  img {
+    height: 400px  !important;
+
+    @include media($sm) {
+      height: 250px !important;
+    }
+  }
+}
+
+.col-from-2-to-3 {
+  grid-column: col2-start / col3-end;
+
+  img {
+    height: 400px !important;
+
+    @include media($sm) {
+      height: 250px !important;
+    }
+  }
+}
+
+.col-3-one-first-row {
+  grid-column: col3-start ;
+  grid-row: row1-start;
+  // max-width: 360px;
+}
+
+.col-3-one-second-row {
+  grid-column: col3-start ;
+  grid-row: row2-start;
+  // max-width: 360px;
+}

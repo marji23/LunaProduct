@@ -1,0 +1,41 @@
+// mixin for responsive font sizes
+@mixin font-size($fs-map) {
+    @each $fs-breakpoint, $fs-font-size in $fs-map {
+        @media #{$fs-breakpoint} {
+          font-size: $fs-font-size;
+        }
+    }
+}
+
+@mixin header-height($fs-map) {
+    @each $fs-breakpoint, $h-height in $fs-map {
+        @media #{$fs-breakpoint} {
+          height: $h-height;
+        }
+    }
+}
+
+@mixin transition($transition...) {
+  -moz-transition:    $transition ease-out;
+  -o-transition:      $transition ease-out;
+  -webkit-transition: $transition ease-out;
+  transition:         $transition ease-out;
+}
+
+// media queries
+$xs: '(max-width: 340px)';
+$sm: '(min-width: 200px) and (max-width: 767px)';
+$md: '(min-width: 768px) and (max-width: 991px)';
+$lg: '(min-width: 992px) and (max-width: 1199px)';
+$xl: '(min-width: 1200px)';
+$xxl: '(min-width: 1400px)';
+$sm-md: '(min-width: 200px) and (max-width: 991px)';
+$md-lg: '(min-width: 768px) and (max-width: 1199px)';
+$lg-xl: '(min-width: 992px)';
+$md-xl: '(min-width: 767px)';
+
+@mixin media($media) {
+    @media #{$media} {
+        @content;
+    }
+}

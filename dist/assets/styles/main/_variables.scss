@@ -1,0 +1,77 @@
+@import 'mixins';
+@import 'colors';
+
+// text stylization
+$letter-spacing:        .6px;
+$small-line-height:     1.3em;
+$medium-line-height:    1.6em;
+$big-line-height:       1.8em;
+
+$navbar-pc: 62px;
+$navbar-text-size: 16px;
+
+$navbar-height: (
+  $sm : 60px,
+  $md : 62px,
+  $lg-xl: $navbar-pc
+);
+
+// font weights
+$slim-weight:         	300;
+$light-weight:          400;
+$medium-weight:        	500;
+$bold-weight:           600;
+$bold-font-family:      "OpenSans Pro Bold", "Arial", sans-serif;
+$regular-font-family:   "OpenSans Pro Regular", "Arial", sans-serif;
+$light-font-family:     "OpenSans Pro Light", "Arial", sans-serif;
+
+// font sizes
+$error-size:            1em;
+
+$double-smaller-text-size: 8px;
+$smaller-text-size:        14px;
+$smaller-text-line-height: 30px;
+
+$super-slim-size: (
+  $sm : 1.03em,
+  $md : 1.04em,
+  $lg-xl: 1.07em
+);
+
+$slim-size: (
+  $sm : 1.08em,
+  $md : 1.09em,
+  $lg-xl: 1.25em
+);
+
+$lighter-size: (
+  $sm : 1.18em,
+  $md : 1.35em,
+  $lg-xl: 1.5em
+);
+
+$medium-size: (
+  $sm: 1.85em,
+  $md : 1.9em,
+  $lg-xl: 2em
+);
+
+$bigger-size: (
+  $sm: 2.4em,
+  $md : 40px,
+  $lg-xl: 40px
+);
+
+$large-size: (
+  $sm: 2.6em,
+  $md : 48px,
+  $lg-xl: 50px
+);
+
+// paddings
+$has-btn-padding:      8px 25px;
+$no-btn-padding:       2px 35px;
+
+// min-height
+$limited-height:       750px;
+
